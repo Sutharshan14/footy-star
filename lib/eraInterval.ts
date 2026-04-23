@@ -1,8 +1,13 @@
-// TODO: Phase 2 — implement era interval calculation
 import type { Player } from '@/types/player';
 
-const CURRENT_YEAR = new Date().getFullYear();
-
 export function eraInterval(a: Player, b: Player): number {
-  throw new Error('Not implemented');
+  const currentYear = new Date().getFullYear();
+  const aFinal = a.finalYear ?? currentYear;
+  const bFinal = b.finalYear ?? currentYear;
+
+  if (a.debutYear <= bFinal && b.debutYear <= aFinal) {
+    return 0;
+  }
+  if (a.debutYear > bFinal) return a.debutYear - bFinal;
+  return b.debutYear - aFinal;
 }
