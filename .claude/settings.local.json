@@ -3,7 +3,11 @@
     "allow": [
       "Bash(npm install *)",
       "Bash(npx vitest *)",
-      "Bash(npm uninstall *)"
+      "Bash(npm uninstall *)",
+      "Bash(node -e ' *)",
+      "Bash(rm \"D:/Projects/AFLStar/footy-star/spec_extracted.txt\")",
+      "Bash(npx tsc *)",
+      "Bash(npm test *)"
     ]
   }
 }
