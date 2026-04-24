@@ -13,6 +13,7 @@ function makePlayer(overrides: Partial<Player> = {}): Player {
     heightCm: 185,
     gamesPlayed: 150,
     jumperNumber: 10,
+    draftPick: 20,
     state: 'VIC',
     debutYear: 2015,
     finalYear: null,
@@ -34,6 +35,7 @@ describe('compareGuess', () => {
     expect(result.hints.height.color).toBe('green');
     expect(result.hints.games.color).toBe('green');
     expect(result.hints.jumper.color).toBe('green');
+    expect(result.hints.draft.color).toBe('green');
     expect(result.hints.era.color).toBe('green');
     expect(result.hints.age.direction).toBe(null);
     expect(result.hints.era.direction).toBe(null);
@@ -162,6 +164,56 @@ describe('compareGuess', () => {
 
     expect(result.hints.era.color).toBe('red');
     expect(result.hints.era.value).toBe(60);
+  });
+
+  it('draft: exact pick match — green, no arrow', () => {
+    const target = makePlayer({ draftPick: 15 });
+    const guess = makePlayer({ draftPick: 15 });
+    const result = compareGuess(guess, target);
+
+    expect(result.hints.draft.color).toBe('green');
+    expect(result.hints.draft.direction).toBe(null);
+    expect(result.hints.draft.value).toBe(15);
+  });
+
+  it('draft: within ±5 — yellow with arrow', () => {
+    const target = makePlayer({ draftPick: 10 });
+    const guess = makePlayer({ draftPick: 7 });
+    const result = compareGuess(guess, target);
+
+    expect(result.hints.draft.color).toBe('yellow');
+    expect(result.hints.draft.direction).toBe('up');
+    expect(result.hints.draft.value).toBe(7);
+  });
+
+  it('draft: more than 5 apart — grey with arrow', () => {
+    const target = makePlayer({ draftPick: 2 });
+    const guess = makePlayer({ draftPick: 40 });
+    const result = compareGuess(guess, target);
+
+    expect(result.hints.draft.color).toBe('grey');
+    expect(result.hints.draft.direction).toBe('down');
+    expect(result.hints.draft.value).toBe(40);
+  });
+
+  it("draft: guess has null draftPick — grey, no arrow, value '—'", () => {
+    const target = makePlayer({ draftPick: 10 });
+    const guess = makePlayer({ draftPick: null });
+    const result = compareGuess(guess, target);
+
+    expect(result.hints.draft.color).toBe('grey');
+    expect(result.hints.draft.direction).toBe(null);
+    expect(result.hints.draft.value).toBe('—');
+  });
+
+  it("draft: both players have null draftPick — grey, no arrow", () => {
+    const target = makePlayer({ draftPick: null });
+    const guess = makePlayer({ draftPick: null });
+    const result = compareGuess(guess, target);
+
+    expect(result.hints.draft.color).toBe('grey');
+    expect(result.hints.draft.direction).toBe(null);
+    expect(result.hints.draft.value).toBe('—');
   });
 
   it('complete mismatch — everything grey (categoricals) / grey (numerics), era red', () => {

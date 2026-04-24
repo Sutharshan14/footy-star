@@ -18,6 +18,7 @@ export interface GuessResult {
     height: AttributeHint;
     games: AttributeHint;
     jumper: AttributeHint;
+    draft: AttributeHint;
     era: AttributeHint;
   };
   isCorrect: boolean;

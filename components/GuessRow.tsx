@@ -35,6 +35,7 @@ export default function GuessRow({ result }: { result: GuessResult }) {
       <HintCell hint={hints.height} />
       <HintCell hint={hints.games} />
       <HintCell hint={hints.jumper} />
+      <HintCell hint={hints.draft} />
       <HintCell hint={hints.era} />
     </div>
   );

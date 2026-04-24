@@ -1,7 +1,7 @@
 import type { GuessResult } from '@/types/hint';
 import GuessRow from './GuessRow';
 
-const HEADERS = ['Team', 'Pos', 'Age', 'Ht', 'Games', '#', 'Era'];
+const HEADERS = ['Team', 'Pos', 'Age', 'Ht', 'Games', '#', '#Pk', 'Era'];
 
 function EmptyRow() {
   return (

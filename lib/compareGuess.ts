@@ -35,6 +35,13 @@ function positionHint(guess: Player, target: Player): AttributeHint {
   return { value: guess.position, color };
 }
 
+function draftHint(guess: Player, target: Player): AttributeHint {
+  if (guess.draftPick === null || target.draftPick === null) {
+    return { value: '—', color: 'grey', direction: null };
+  }
+  return numericHint(guess.draftPick, target.draftPick, 5);
+}
+
 function eraHint(guess: Player, target: Player): AttributeHint {
   const gap = eraInterval(guess, target);
   let color: HintColor;
@@ -55,6 +62,7 @@ export function compareGuess(guess: Player, target: Player): GuessResult {
       height: numericHint(guess.heightCm, target.heightCm, 5),
       games: numericHint(guess.gamesPlayed, target.gamesPlayed, 25),
       jumper: numericHint(guess.jumperNumber, target.jumperNumber, 5),
+      draft: draftHint(guess, target),
       era: eraHint(guess, target),
     },
     isCorrect: guess.id === target.id,

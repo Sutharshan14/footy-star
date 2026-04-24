@@ -23,6 +23,7 @@ export interface Player {
   heightCm: number;
   gamesPlayed: number;
   jumperNumber: number;
+  draftPick: number | null;
   state: State;
   debutYear: number;
   finalYear: number | null;
