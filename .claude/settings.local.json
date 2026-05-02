@@ -7,7 +7,20 @@
       "Bash(node -e ' *)",
       "Bash(rm \"D:/Projects/AFLStar/footy-star/spec_extracted.txt\")",
       "Bash(npx tsc *)",
-      "Bash(npm test *)"
+      "Bash(npm test *)",
+      "Bash(python *)",
+      "Bash(node *)",
+      "Bash(npx tsx *)",
+      "Bash(awk -F',' 'NR>1 {print $9}' D:/Projects/AFLStar/footy-star/data/raw_pulls/*.csv)",
+      "Bash(awk -F',' 'NR>1 {print $10}' D:/Projects/AFLStar/footy-star/data/raw_pulls/*.csv)",
+      "Bash(awk -F',' '{print NF}' D:/Projects/AFLStar/footy-star/data/raw_pulls/*.csv)",
+      "Bash(awk *)",
+      "Bash(command -v Rscript)",
+      "Bash(Rscript --version)",
+      "PowerShell(Test-Path *)",
+      "PowerShell(& 'C:\\\\Program Files\\\\R\\\\R-4.6.0\\\\bin\\\\Rscript.exe' 'D:\\\\Projects\\\\AFLStar\\\\footy-star\\\\pull_missing_teams.R')",
+      "PowerShell(& 'C:\\\\Program Files\\\\R\\\\R-4.6.0\\\\bin\\\\Rscript.exe' 'D:\\\\Projects\\\\AFLStar\\\\footy-star\\\\probe_team_names.R')",
+      "Bash(grep -E '^\\(gws|north_melbourne\\)\\\\.csv$')"
     ]
   }
 }

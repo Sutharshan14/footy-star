@@ -1,6 +1,4 @@
-import type { Team, State, Position } from '@/types/player';
-
-export type PositionGroup = 'forward' | 'midfield' | 'defender' | 'ruck';
+import type { Team, State } from '@/types/player';
 
 export const TEAM_TO_STATE: Record<Team, State> = {
   'Adelaide': 'SA',

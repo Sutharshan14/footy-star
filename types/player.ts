@@ -7,10 +7,7 @@ export type Team =
 
 export type State = 'VIC' | 'NSW' | 'QLD' | 'SA' | 'WA' | 'TAS' | 'NT' | 'ACT';
 
-export type Position =
-  | 'Key Forward' | 'Small Forward' | 'Forward Flank'
-  | 'Midfielder' | 'Ruck' | 'Wing'
-  | 'Half Back' | 'Key Defender' | 'Small Defender';
+export type Position = 'Defender' | 'Midfield' | 'Ruck' | 'Forward';
 
 export interface Player {
   id: string;
