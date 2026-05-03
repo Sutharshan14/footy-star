@@ -1,6 +1,7 @@
 'use client';
 
 import type { Player } from '@/types/player';
+import { POSITION_DISPLAY } from '@/lib/teamGroups';
 
 export default function ResultModal({
   status,
@@ -36,7 +37,7 @@ export default function ResultModal({
           )}
         </p>
         <p className="mt-1 text-sm text-zinc-500">
-          {target.team} · {target.position}
+          {target.team} · {POSITION_DISPLAY[target.position]}
         </p>
         <button
           type="button"

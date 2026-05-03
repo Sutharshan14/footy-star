@@ -1,5 +1,6 @@
 import type { AttributeHint, HintColor } from '@/types/hint';
 import type { GuessResult } from '@/types/hint';
+import { POSITION_DISPLAY } from '@/lib/teamGroups';
 
 const COLOR_CLASS: Record<HintColor, string> = {
   green: 'bg-green-500 text-white',
@@ -30,7 +31,7 @@ export default function GuessRow({ result }: { result: GuessResult }) {
         {player.firstName} {player.lastName}
       </div>
       <HintCell hint={hints.team} />
-      <HintCell hint={hints.position} />
+      <HintCell hint={{ ...hints.position, value: POSITION_DISPLAY[player.position] }} />
       <HintCell hint={hints.age} />
       <HintCell hint={hints.height} />
       <HintCell hint={hints.games} />

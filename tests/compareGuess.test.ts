@@ -8,7 +8,7 @@ function makePlayer(overrides: Partial<Player> = {}): Player {
     firstName: 'Test',
     lastName: 'Player',
     team: 'Carlton',
-    position: 'Midfielder',
+    position: 'MIDFIELDER',
     age: 28,
     heightCm: 185,
     gamesPlayed: 150,
@@ -45,7 +45,7 @@ describe('compareGuess', () => {
     const target = makePlayer({
       id: 'target',
       team: 'Carlton',
-      position: 'Key Defender',
+      position: 'KEY_DEFENDER',
       age: 34,
       heightCm: 200,
       gamesPlayed: 300,
@@ -78,12 +78,12 @@ describe('compareGuess', () => {
   });
 
   it('same position group, different specific position — position yellow', () => {
-    const target = makePlayer({ position: 'Key Forward' });
-    const guess = makePlayer({ position: 'Small Forward' });
+    const target = makePlayer({ position: 'KEY_FORWARD' });
+    const guess = makePlayer({ position: 'MEDIUM_FORWARD' });
     const result = compareGuess(guess, target);
 
     expect(result.hints.position.color).toBe('yellow');
-    expect(result.hints.position.value).toBe('Small Forward');
+    expect(result.hints.position.value).toBe('MEDIUM_FORWARD');
   });
 
   it('numeric within tolerance — yellow with up arrow (target is higher)', () => {
@@ -220,7 +220,7 @@ describe('compareGuess', () => {
     const target = makePlayer({
       id: 'target',
       team: 'Brisbane',
-      position: 'Key Forward',
+      position: 'KEY_FORWARD',
       state: 'QLD',
       age: 22,
       heightCm: 200,
@@ -232,7 +232,7 @@ describe('compareGuess', () => {
     const guess = makePlayer({
       id: 'guess',
       team: 'West Coast',
-      position: 'Small Defender',
+      position: 'MEDIUM_DEFENDER',
       state: 'WA',
       age: 35,
       heightCm: 175,
